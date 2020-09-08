@@ -28,14 +28,18 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  
- It should be only 90% of the width of its parent element
+main should be only 90% of the width of its parent element
 It should be center aligned to the body
 It should have the same colour background as the <body> element
  */
 
  main {
-   width: 90vw;
-   display: flex;
-   align-items: center;
-   flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;   
+  width: 90%;   
+  margin: auto;
  }
+
+ 
