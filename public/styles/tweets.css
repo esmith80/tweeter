@@ -71,10 +71,16 @@
   padding-right: 0px;
 }
 
+#user-full-name {
+  vertical-align: top;
+  font-size: 26px;
+  margin-left: 10px;
+}
+
 .user-handle {
   color: #F5F1EC;
   font-weight: lighter; 
-  font-size: 22px;
+  font-size: 26px;
 }
 
 .posted-tweet:hover .user-handle {
