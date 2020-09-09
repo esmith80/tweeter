@@ -7,15 +7,18 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
 
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/90e4eb8664.js" crossorigin="anonymous"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
@@ -51,7 +54,7 @@
       <section class="new-tweet">
         <form action="/tweets" method="POST">
           <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text" value="vldfjdjfdjfkdjfkdjfkjdkfjkdfj"></textarea>
+          <textarea name="text" id="tweet-text"></textarea>
           <div>
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
@@ -59,16 +62,30 @@
         </form>
       </section>
       
-      <section>
+      
+      <section class="posted-tweet">
         <article class="tweet">
           <header>
-            <div class="user-info">user pic goes here</div>
-            <div class="user-handle">handle goes here</div>
+            <div class="user-info"><img src="images/newton.png"></div>
+            <div class="user-handle">@SirIsaac</div>
           </header>
-          <textarea readonly class="tweet-text" value=""></textarea>
+          <textarea readonly class="posted-tweet" maxlength="140">This is read-only tweet. I left it as a text area because I wondered if in a future feature we'd need to click into this area to edit a tweet?</textarea>
           <footer>
             <div class="post-date">10 Days Ago</div>
-            <div class="tweet-actions">icons go here</div>
+            <div class="tweet-actions"> 
+              <img class="tweet-icon"
+                src="/images/flag.svg"
+                alt="retweet icon"
+              />
+              <img class="tweet-icon"
+                src="/images/heart.svg"
+                alt="retweet icon"
+              />
+              <img class="tweet-icon"
+                src="/images/retweet-dark.svg"
+                alt="retweet icon"
+              />
+            </div>
           </footer>
         <article>
       </section>
