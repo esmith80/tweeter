@@ -50,14 +50,20 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <div id="error-zero-characters">
+        <strong>Hey!</strong> You ain't humming about anything?! (no characters entered in form)
+      </div>
+      <div id="error-max-characters">
+        <strong>Hey!</strong> You talk too much. (too many characters entered in form)
+      </div>
 
       <section class="new-tweet">
-        <form action="/tweets" method="POST">
+        <form action="/tweets" method="POST" id="post-tweet">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           <div>
-            <button type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
+            <button type="submit" id="tweet-button">Tweet</button>
+            <output name="counter" id="counter" for="tweet-text">140</output>
           </div>
         </form>
       </section>

@@ -43,3 +43,27 @@ button {
   padding: 5px;
  
 }
+
+#error-zero-characters {
+  color: red;
+  border-radius: 3px;
+  border: 2px solid red;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #F2DEDE;
+  font-size: smaller;
+  display: none;
+}
+
+#error-max-characters {
+  color: red;
+  border-radius: 3px;
+  border: 2px solid red;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #F2DEDE;
+  font-size: smaller;
+  display: none;
+}
