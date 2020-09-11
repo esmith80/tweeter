@@ -8,8 +8,7 @@ section {
   color: #565349;
   font-size: 20px;
   font-weight: bold;
-  padding: 10px;
-  
+  padding: 10px;  
 }
 
 textarea {
@@ -31,17 +30,19 @@ textarea {
   font-family: 'Bungee', cursive;
   font-size: 20px;
   padding-top: 10px;
-
-
-  /* align-items: center; */
 }
 
 button {
   background-color: #4056A1;
   color: #FFFFFF;
   font-size: 16px;
-  padding: 5px;
- 
+  height: 30px;
+  width: 80px;   
+}
+
+button:hover {
+  border: 1px blue;
+  box-shadow: 3px 3px 3px #5f6c9e;
 }
 
 #error-zero-characters {

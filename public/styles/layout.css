@@ -21,25 +21,58 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-
-
-
-
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
- 
-main should be only 90% of the width of its parent element
-It should be center aligned to the body
-It should have the same colour background as the <body> element
  */
 
  main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;   
+  justify-content: center;
   width: 90%;   
   margin: auto;
  }
 
- 
+.leftside-container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  background-color: #D89820;
+  color: #FFFFFF;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 1024px) { 
+  #desktop-flow {
+    display: flex;
+    padding: 100px 50px 0px 50px;
+  }
+
+  #left-outer-container {
+    padding: 50px;
+    width: 100%;
+  }
+
+  .leftside-container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    background-color: #D89820;
+    color: #FFFFFF;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  }
+
+  .container {
+    margin-top: 100px;
+  }
+
+}
+

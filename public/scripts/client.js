@@ -6,28 +6,22 @@
 
 $( document ).ready(function() {
 
-  console.log( "Document ready!" );
+// --------- HELPER FUNCTIONS -----------------
 
+// accepts array of tweet objects and appends them to list of tweets 
   const renderTweets = function(tweets) {
-    // loops through tweets    
-    for (const tweet of tweets) {
-      const $tweet = createTweetElement(tweet);
-      $('.container').append($tweet);
+    for (const t of tweets) {
+      const tweet = createTweetElement(t);
+      $('.container').append(tweet);
     }
-    // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container
   }
-  
+// accepts a single tweet object (raw form), returns JQuery object $tweet   
   const createTweetElement = (tweet) => {
 
-    // get date info to populate html
     const tweetDate = new Date(tweet.created_at);
-    const tweetYear = tweetDate.getFullYear();
-    const tweetMonth = tweetDate.getMonth() + 1;
-    const tweetDay = tweetDate.getDate();
+    const timeSinceTweet = moment(tweetDate).fromNow();
 
-    // return entire html structure of tweet
-    // this is JQuery and says 'create this html markup'
+    // return JQuery object which contains html structure of tweet
     const $tweet = $(`<section class="posted-tweet">
     <article class="tweet">
       <header>
@@ -36,7 +30,7 @@ $( document ).ready(function() {
       </header>
       <textarea readonly class="posted-tweet" maxlength="140">${tweet.content.text}</textarea>
       <footer>
-        <div class="post-date">${tweetYear}-${tweetMonth}-${tweetDay}</div>
+        <div class="post-date">${timeSinceTweet}</div>
         <div class="tweet-actions"> 
           <img class="tweet-icon"
             src="/images/flag.svg"
@@ -54,68 +48,64 @@ $( document ).ready(function() {
       </footer>
     <article>
     </section>`);
+
     return $tweet;
   };
   
   const loadTweets = function () {
-    console.log('loadtweets just got called');
     $.get('/tweets')
       .then(function (jsonTweets) {
         const newestFirstTweetList = jsonTweets.reverse();
-        renderTweets(newestFirstTweetList); // NOW WHAT am i supposed to return something?
-       });
+        renderTweets(newestFirstTweetList);
+      });
     };
 
   // ----------- INITIAL PAGE LOAD AND EVENT LISTENERS --------
   
-    // initial loading page this will run at start of program 
+  // initial load of tweets in db 
   loadTweets(); 
 
-  // event listener to submit form using JQuery using Ajax  
-  const $form = $('#post-tweet');
-  let maxCharDisplay = false;
-  let zeroCharDisplay = false;
+  // helper variables for show/hiding error messages
+  let maxErrShowing = false;
+  let zeroTextErrShowing = false;
   
-  $form.submit( function (event) {
-    
+  // event listener to submit form using JQuery using Ajax  
+  $('#post-tweet').submit( function (event) {
     event.preventDefault();
-    
-    // validation logic
-    let charRemaining = $('#counter').val();
-    if (charRemaining == 140) {
-      console.log('entered the charRemaining == 140 condition');
-      if (maxCharDisplay) {
+
+    // validation of tweet content (cannot be empty, cannot be >140 characters)
+    let charsLeft = $('#counter').val();
+    if (charsLeft == 140) {
+      if (maxErrShowing) {
         $('#error-max-characters').slideUp();
-        maxCharDisplay = false;
+        maxErrShowing = false;
       }
       $('#error-zero-characters').slideDown();
-      zeroCharDisplay = true;
-    } else if (charRemaining < 0) {
-      if (zeroCharDisplay) {
+      zeroTextErrShowing = true;
+    } else if (charsLeft < 0) {
+      if (zeroTextErrShowing) {
         $('#error-zero-characters').slideUp();
-        zeroCharDisplay = false;
+        zeroTextErrShowing = false;
       }
       $('#error-max-characters').slideDown();
-      maxCharDisplay = true;
-
+      maxErrShowing = true;
     } else {
+
+      // validation passed, reset error messages
       $('#error-zero-characters').slideUp();
       $('#error-max-characters').slideUp();
-      zeroCharDisplay = false;
-      maxCharDisplay = false;
-      
-      // if character limit is OK, proceed with creating new tweet in database
-      // why serialize??? because server is configured to revceive form data as a query string so we need to serialize it
-      const newTweet = $(this).serialize(); //returns text=whateveryoutypein
-      $.post('/tweets', newTweet) // sending a request to server
-      .then(function (response) { // receiving the response
+      zeroTextErrShowing = false;
+      maxErrShowing = false;
+
+      // prep tweet for server and reload page
+      const newTweet = $(this).serialize();
+      $.post('/tweets', newTweet)
+      .then(function (response) {
         document.getElementById("post-tweet").reset();
         $('#counter').empty().append("140");
-        $('.posted-tweet').replaceWith(loadTweets());
-        
-        });
+        $('.posted-tweet').replaceWith(loadTweets());       
+      });
     }
   });
-
-}); // end of document ready top bracket
+}); 
 

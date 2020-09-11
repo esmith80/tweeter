@@ -61,6 +61,7 @@
   width: 25px;
   padding-left: 3px;
   padding-right: 3px;
+  display: none;
  
 }
 
@@ -73,21 +74,27 @@
 
 #user-full-name {
   vertical-align: top;
-  font-size: 26px;
+  font-size: 24px;
   margin-left: 10px;
 }
 
 .user-handle {
-  color: #F5F1EC;
+  color: #4156A1;
+  opacity: 50%;
   font-weight: lighter; 
-  font-size: 26px;
+  font-size: 20px;
 }
 
 .posted-tweet:hover .user-handle {
-  color: #916e99;
+  color: ##4156A1;
+  opacity: 100%;
 }
 
 .posted-tweet:hover {
-  box-shadow: 15px 15px 15px #916e99;
+  box-shadow: 15px 15px 15px #5f6c9e;
+}
+
+.posted-tweet:hover .tweet-icon {
+  display: inline;
 }
 

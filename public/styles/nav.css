@@ -1,19 +1,8 @@
-/*
-Navbar should:
-Be 120 pixels in height
-Be the full width of the viewport.
-Have #4056A1 as its default background colour.
-Have #FFFFF as its default font colour
-The <span> within the <nav> has Bungee as it's default font-family
-The inner content should not be touching the viewport edge on any side 
-and should remain 1.5ems away from all edges
-
-*/
-
 nav {
   height: 120px;
   width: 100vw;
-  background-color: #4056A1;
+  background-color: #D89820;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
   color: #FFFFFF;
   padding: 1.5em;
   display: flex;
@@ -21,17 +10,24 @@ nav {
   justify-content: space-between;
   position: fixed;
   top: 0;
-
 }
 
-#tweeterLogo {
+#tweeter-logo {
   font-family: 'Bungee', cursive;
   font-size: 36px;
 }
 
-#navSlogan {
+#nav-slogan {
   text-align: center;
   font-size: 20px;
   line-height: 15px;
 }
 
+/* desktop styles */
+
+@media only screen and (min-width: 1024px) {
+  nav {
+    background-color: #4056A1;
+    background-image: none;
+  }
+}
